@@ -4,7 +4,7 @@ import {
   AnimatedBadge,
 } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { FaArrowUp, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
 
 const projects = [
@@ -100,7 +100,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <FaExternalLinkAlt className="w-4 h-4 mr-2" />
                       Ver Projeto
                     </a>
                   </Button>
@@ -115,7 +115,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Github className="w-4 h-4 mr-2" />
+                      <FaGithub className="w-4 h-4 mr-2" />
                       Código
                     </a>
                   </Button>
@@ -160,7 +160,7 @@ export default function Projects() {
                 <div className="pt-4 border-t border-border/50">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">Ver detalhes</span>
-                    <ArrowUpRight
+                    <FaArrowUp
                       className="w-4 h-4 text-primary opacity-0 -translate-x-2 
                       group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                     />
@@ -184,7 +184,7 @@ export default function Projects() {
           >
             <span className="relative z-10 flex items-center gap-2 text-foreground">
               Ver todos os projetos
-              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <FaArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </span>
           </Button>
         </div>

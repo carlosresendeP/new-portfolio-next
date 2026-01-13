@@ -3,16 +3,24 @@ import {
   PageContainer,
   PageSectionTitle,
 } from "@/components/ui/page";
-import { Cpu, Globe, Layers, Command, Zap, Box, Activity } from "lucide-react";
+import {
+  FaMicrochip,
+  FaGlobe,
+  FaLayerGroup,
+  FaTerminal,
+  FaBolt,
+  FaBox,
+  FaChartLine,
+} from "react-icons/fa";
 
 const companies = [
-  { name: "Acme Corp", icon: Box },
-  { name: "Global Tech", icon: Globe },
-  { name: "FastLayers", icon: Layers },
-  { name: "Command.io", icon: Command },
-  { name: "ZapEnergy", icon: Zap },
-  { name: "NextLevel", icon: Activity },
-  { name: "FutureCpu", icon: Cpu },
+  { name: "Acme Corp", icon: FaBox },
+  { name: "Global Tech", icon: FaGlobe },
+  { name: "FastLayers", icon: FaLayerGroup },
+  { name: "Command.io", icon: FaTerminal },
+  { name: "ZapEnergy", icon: FaBolt },
+  { name: "NextLevel", icon: FaChartLine },
+  { name: "FutureCpu", icon: FaMicrochip },
 ];
 
 export default function LogoCloud() {

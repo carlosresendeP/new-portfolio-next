@@ -3,29 +3,30 @@ import {
   PageContainer,
   AnimatedBadge,
 } from "@/components/ui/page";
+
+import { RiTailwindCssFill } from "react-icons/ri";
+import { SiTypescript } from "react-icons/si";
 import {
-  Code2,
-  Database,
-  Layout,
-  Server,
-  Smartphone,
-  Globe,
-  Box,
-  Cpu,
-  Terminal,
-  Cloud,
-} from "lucide-react";
+  FaCode,
+  FaDatabase,
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNodeJs 
+} from "react-icons/fa";
+
 
 const technologies = [
-  { name: "HTML", icon: Code2, category: "Frontend" },
-  { name: "CSS", icon: Code2, category: "Frontend" },
-  { name: "JavaScript", icon: Code2, category: "Frontend" },
-  { name: "React", icon: Code2, category: "Frontend" },
-  { name: "Next.js", icon: Globe, category: "Frontend" },
-  { name: "TypeScript", icon: Terminal, category: "Languages" },
-  { name: "Tailwind CSS", icon: Layout, category: "Styling" },
-  { name: "Node.js", icon: Server, category: "Backend" },
-  { name: "PostgreSQL", icon: Database, category: "Database" },
+  { name: "HTML", icon: FaHtml5, category: "Frontend" },
+  { name: "CSS", icon: FaCss3, category: "Frontend" },
+  { name: "JavaScript", icon: FaJs, category: "Frontend" },
+  { name: "React", icon: FaReact, category: "Frontend" },
+  { name: "Next.js", icon: FaCode, category: "Frontend" },
+  { name: "TypeScript", icon: SiTypescript, category: "Languages" },
+  { name: "Tailwind CSS", icon: RiTailwindCssFill, category: "Styling" },
+  { name: "Node.js", icon: FaNodeJs, category: "Backend" },
+  { name: "PostgreSQL", icon: FaDatabase, category: "Database" },
 ];
 
 export default function TechStack() {
@@ -36,8 +37,8 @@ export default function TechStack() {
     >
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute -left-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[120px] animate-pulse" />
-        <div className="absolute -right-20 bottom-20 h-[600px] w-[600px] rounded-full bg-primary/20 blur-[120px] animate-float" />
+        <div className="absolute -left-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+        <div className="absolute -right-20 bottom-20 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[120px] animate-float" />
         <div className="absolute inset-0 bg-grid-white [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
       </div>
 

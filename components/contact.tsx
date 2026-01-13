@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MessageSquare, Send } from "lucide-react";
+import { FaEnvelope, FaCommentDots, FaPaperPlane } from "react-icons/fa";
 
 const Contact = () => {
   return (
@@ -38,7 +38,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-[1fr_2fr] gap-12 items-start max-w-5xl mx-auto">
           <div className="space-y-6">
             <div className="p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
-              <Mail className="w-8 h-8 text-primary mb-4" />
+              <FaEnvelope className="w-8 h-8 text-primary mb-4" />
               <h3 className="text-lg font-bold text-foreground mb-1">Email</h3>
               <p className="text-muted-foreground text-sm mb-4">
                 Mande um email direto
@@ -52,7 +52,7 @@ const Contact = () => {
             </div>
 
             <div className="p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
-              <MessageSquare className="w-8 h-8 text-green-500 mb-4" />
+              <FaCommentDots className="w-8 h-8 text-green-500 mb-4" />
               <h3 className="text-lg font-bold text-foreground mb-1">
                 WhatsApp
               </h3>
@@ -126,7 +126,7 @@ const Contact = () => {
             >
               <span className="relative z-10 flex items-center gap-2 justify-center">
                 Enviar Mensagem
-                <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <FaPaperPlane className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
               <span className="absolute inset-0 rounded-full bg-primary opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
             </Button>

@@ -25,7 +25,7 @@ export default function HomePage() {
       <Projects />
       <TechStack />
       {/* <Testimonials /> */}
-      <CaseStudies />
+      {/* <CaseStudies /> */}
       <FAQ />
       <Contact />
       <CTA />

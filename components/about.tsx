@@ -5,7 +5,7 @@ import {
   AnimatedBadge,
 } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { FaArrowRight, FaCheckCircle } from "react-icons/fa";
 import Image from "next/image";
 import DevPortrait from "@/public/developer_portrait.png";
 
@@ -72,7 +72,7 @@ export default function About() {
                 "Comunicação clara e transparência total",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                  <FaCheckCircle className="w-5 h-5 text-primary shrink-0" />
                   <span className="text-foreground font-medium">{item}</span>
                 </div>
               ))}
@@ -90,7 +90,7 @@ export default function About() {
             >
               <span className="relative z-10 flex items-center gap-2">
                 Conheça minha história
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <FaArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
               <span className="absolute inset-0 rounded-full bg-primary opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
             </Button>

@@ -3,7 +3,7 @@ import {
   PageContainer,
   AnimatedBadge,
 } from "@/components/ui/page";
-import { Star, Quote } from "lucide-react";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
 import Image from "next/image";
 
 const testimonials = [
@@ -68,11 +68,14 @@ export default function Testimonials() {
                 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.15)]
                 transition-all duration-300 hover:-translate-y-1"
             >
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-primary/20" />
+              <FaQuoteLeft className="absolute top-6 right-6 w-12 h-12 text-primary/20" />
 
               <div className="flex gap-1 mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  <FaStar
+                    key={i}
+                    className="w-5 h-5 fill-primary text-primary"
+                  />
                 ))}
               </div>
 

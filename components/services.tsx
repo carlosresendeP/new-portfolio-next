@@ -5,47 +5,47 @@ import {
   AnimatedBadge,
 } from "@/components/ui/page";
 import {
-  Code2,
-  Paintbrush,
-  Rocket,
-  LineChart,
-  Globe,
-  Smartphone,
-} from "lucide-react";
+  FaCode,
+  FaPaintBrush,
+  FaRocket,
+  FaChartLine,
+  FaGlobe,
+  FaMobileAlt,
+} from "react-icons/fa";
 
 const services = [
   {
-    icon: Code2,
+    icon: FaCode,
     title: "Desenvolvimento Frontend",
     description:
       "Interfaces reativas e performáticas com React, Next.js e TypeScript. Código moderno e escalável.",
   },
   {
-    icon: Paintbrush,
+    icon: FaPaintBrush,
     title: "UI/UX Design",
     description:
       "Design systems completos, prototipagem e interfaces intuitivas que encantam seus usuários.",
   },
   {
-    icon: Rocket,
+    icon: FaRocket,
     title: "Performance & SEO",
     description:
       "Otimização vitais da web (Core Web Vitals) para garantir que seu site carregue instantaneamente e rankeie bem.",
   },
   {
-    icon: Smartphone,
+    icon: FaMobileAlt,
     title: "Mobile First",
     description:
       "Experiências perfeitamente responsivas que funcionam em qualquer dispositivo, do celular ao desktop 4k.",
   },
   {
-    icon: LineChart,
+    icon: FaChartLine,
     title: "Integração & APIs",
     description:
       "Conexão com CMS, sistemas de pagamento, CRMs e outras ferramentas para automatizar seu negócio.",
   },
   {
-    icon: Globe,
+    icon: FaGlobe,
     title: "Sistemas Web",
     description:
       "Aplicações web completas (SaaS), dashboards administrativos e plataformas de e-commerce.",

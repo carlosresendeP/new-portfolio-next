@@ -1,14 +1,10 @@
 import { PageContainer } from "@/components/ui/page";
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter, FaHeart } from "react-icons/fa";
 import { links } from "@/lib/links";
-
-
 
 export default function Footer() {
   return (
     <footer className="border-t border-border/50 bg-background pt-16 pb-8 relative overflow-hidden">
-
-
       <PageContainer className="relative z-10">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2 space-y-4">
@@ -22,27 +18,27 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href={links.github}
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center 
-                  hover:bg-primary hover:text-white hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
+                className="w-10 h-10 rounded-full bg-secondary text-foreground flex items-center justify-center 
+                  hover:bg-primary hover:text-muted hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
                   transition-all duration-300"
               >
-                <Github className="w-5 h-5" />
+                <FaGithub className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center 
-                  hover:bg-primary hover:text-white hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
+                className="w-10 h-10 rounded-full bg-secondary text-foreground flex items-center justify-center 
+                  hover:bg-primary hover:text-muted hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
                   transition-all duration-300"
               >
-                <Linkedin className="w-5 h-5" />
+                <FaLinkedin className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center 
-                  hover:bg-primary hover:text-white hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
+                className="w-10 h-10 rounded-full bg-secondary text-foreground flex items-center justify-center 
+                  hover:bg-primary hover:text-muted hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
                   transition-all duration-300"
               >
-                <Twitter className="w-5 h-5" />
+                <FaTwitter className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -51,22 +47,38 @@ export default function Footer() {
             <h4 className="font-bold text-foreground mb-6">Links Rápidos</h4>
             <ul className="space-y-4 text-muted-foreground">
               <li>
-                <a href={links.github} className="hover:text-primary transition-colors">
+                <a
+                  href={links.github}
+                  target="_blank"
+                  className="  hover:text-primary transition-colors"
+                >
                   Sobre
                 </a>
               </li>
               <li>
-                <a href={links.linkedin} className="hover:text-primary transition-colors">
+                <a
+                  href={links.linkedin}
+                  target="_blank"
+                  className="hover:text-primary transition-colors"
+                >
                   Projetos
                 </a>
               </li>
               <li>
-                <a href={links.twitterx} className="hover:text-primary transition-colors">
+                <a
+                  href={links.twitterx}
+                  target="_blank"
+                  className="hover:text-primary transition-colors"
+                >
                   Serviços
                 </a>
               </li>
               <li>
-                <a href={links.whatsapp} className="hover:text-primary transition-colors">
+                <a
+                  href={links.whatsapp}
+                  target="_blank"
+                  className="hover:text-primary transition-colors"
+                >
                   Contato
                 </a>
               </li>

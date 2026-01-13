@@ -1,6 +1,6 @@
 import { PageSection, PageContainer } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight } from "lucide-react";
+import { FaCalendar, FaArrowRight } from "react-icons/fa";
 
 export default function CTA() {
   return (
@@ -33,7 +33,6 @@ export default function CTA() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-
               <Button
                 variant="default"
                 className="group relative bg-primary h-14 px-8 rounded-full text-lg w-full sm:w-auto border-primary  overflow-hidden
@@ -43,11 +42,10 @@ export default function CTA() {
                   active:scale-95"
               >
                 <span className="relative z-10 flex items-center gap-2 text-foreground font-semibold">
-                  Fazer Agendamento <Calendar/>
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  Fazer Agendamento <FaCalendar />
+                  <FaArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Button>
-
 
               <Button
                 variant="outline"
@@ -59,7 +57,7 @@ export default function CTA() {
               >
                 <span className="relative z-10 flex items-center gap-2 text-foreground font-semibold">
                   Ver Planos e Preços
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <FaArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Button>
             </div>

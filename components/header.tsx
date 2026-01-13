@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Code2 } from "lucide-react";
+import { FaCode } from "react-icons/fa";
 
 const NavLink = ({
   href,
@@ -24,7 +24,7 @@ export default function Header() {
         <nav className="flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer">
             <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-              <Code2 className="size-6 text-primary transition-transform group-hover:rotate-12" />
+              <FaCode className="size-6 text-primary transition-transform group-hover:rotate-12" />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-white/80">
               DevPortfolio

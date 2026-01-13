@@ -3,7 +3,7 @@ import {
   PageContainer,
   AnimatedBadge,
 } from "@/components/ui/page";
-import { TrendingUp, Users, Clock } from "lucide-react";
+import { FaChartLine, FaUsers, FaClock } from "react-icons/fa";
 
 const cases = [
   {
@@ -12,7 +12,7 @@ const cases = [
     label: "Aumento em Leads",
     description:
       "Redesign completo da landing page focado em conversão e otimização do funil de vendas.",
-    icon: TrendingUp,
+    icon: FaChartLine,
   },
   {
     title: "E-commerce de Moda",
@@ -20,7 +20,7 @@ const cases = [
     label: "Tempo de Carregamento",
     description:
       "Otimização de performance Core Web Vitals, reduzindo o LCP de 4.2s para 0.8s.",
-    icon: Clock,
+    icon: FaClock,
   },
   {
     title: "Portal Educacional",
@@ -28,7 +28,7 @@ const cases = [
     label: "Usuários Ativos/Mês",
     description:
       "Arquitetura escalável para suportar alto tráfego simultâneo sem degradação de performance.",
-    icon: Users,
+    icon: FaUsers,
   },
 ];
 

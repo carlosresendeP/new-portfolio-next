@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import {
+  FaArrowRight,
+  FaDownload,
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+} from "react-icons/fa";
 import Image from "next/image";
 import {
   PageSection,
@@ -58,7 +64,7 @@ export default function Hero() {
             >
               <span className="relative z-10 flex items-center gap-2">
                 Ver Projetos
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <FaArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
               <span className="absolute inset-0 rounded-full bg-primary opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
             </Button>
@@ -72,7 +78,7 @@ export default function Hero() {
               active:scale-95"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <Download className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                <FaDownload className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                 Download CV
               </span>
             </Button>
@@ -81,24 +87,27 @@ export default function Hero() {
           {/* Social Proof / Links */}
           <div className="flex items-center gap-6 pt-4 animate-fade-in-up animation-delay-400">
             <a
-              href={links.github} target="_blank"
+              href={links.github}
+              target="_blank"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              <Github className="w-6 h-6" />
+              <FaGithub className="w-6 h-6" />
               <span className="sr-only">GitHub</span>
             </a>
             <a
-              href={links.linkedin} target="_blank"
+              href={links.linkedin}
+              target="_blank"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              <Linkedin className="w-6 h-6" />
+              <FaLinkedin className="w-6 h-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
             <a
-              href={links.email} target="_blank"
+              href={links.email}
+              target="_blank"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              <Mail className="w-6 h-6" />
+              <FaEnvelope className="w-6 h-6" />
               <span className="sr-only">Email</span>
             </a>
           </div>
