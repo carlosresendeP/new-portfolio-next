@@ -1,0 +1,399 @@
+<!doctype html>
+
+<html class="dark" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dev Portfolio | Hero e Introdução de Impacto</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#607AFB",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1323",
+            },
+            fontFamily: { display: "Inter" },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300"
+  >
+    <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+      <!-- Navigation Component -->
+      <header
+        class="fixed top-0 z-50 w-full border-b border-white/5 bg-background-dark/80 backdrop-blur-md"
+      >
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10"
+        >
+          <div class="flex items-center gap-2.5 text-white">
+            <div
+              class="flex size-9 items-center justify-center rounded-lg bg-primary text-background-dark"
+            >
+              <span class="material-symbols-outlined font-bold">terminal</span>
+            </div>
+            <h2 class="text-xl font-extrabold tracking-tight">DevPortfolio</h2>
+          </div>
+          <nav class="hidden items-center gap-10 md:flex">
+            <a
+              class="text-sm font-medium text-slate-400 transition-colors hover:text-primary"
+              href="#"
+              >Início</a
+            >
+            <a
+              class="text-sm font-medium text-slate-400 transition-colors hover:text-primary"
+              href="#"
+              >Sobre</a
+            >
+            <a
+              class="text-sm font-medium text-slate-400 transition-colors hover:text-primary"
+              href="#"
+              >Habilidades</a
+            >
+            <a
+              class="text-sm font-medium text-slate-400 transition-colors hover:text-primary"
+              href="#"
+              >Projetos</a
+            >
+          </nav>
+          <div class="flex items-center gap-4">
+            <button
+              class="flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold text-background-dark transition-transform hover:scale-105 active:scale-95"
+            >
+              <span>Vamos Conversar</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <!-- Hero Section -->
+      <main class="flex grow flex-col pt-20">
+        <section
+          class="relative flex min-h-[90vh] items-center justify-center px-6 py-20 lg:px-10"
+        >
+          <!-- Background Decorative Elements -->
+          <div class="absolute inset-0 z-0 overflow-hidden">
+            <div
+              class="absolute -left-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[120px]"
+            ></div>
+            <div
+              class="absolute -right-20 bottom-20 h-[500px] w-[500px] rounded-full bg-blue-500/5 blur-[120px]"
+            ></div>
+          </div>
+          <div
+            class="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center"
+          >
+            <!-- Hero Content -->
+            <div class="flex flex-col items-start gap-8">
+              <div
+                class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary"
+              >
+                <span class="relative flex h-2 w-2">
+                  <span
+                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+                  ></span>
+                  <span
+                    class="relative inline-flex h-2 w-2 rounded-full bg-primary"
+                  ></span>
+                </span>
+                Disponível para novos projetos
+              </div>
+              <div class="flex flex-col gap-4">
+                <h1
+                  class="text-5xl font-black leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl"
+                >
+                  Transformando visões em
+                  <span class="text-primary">experiências digitais</span> de
+                  alta performance.
+                </h1>
+                <p
+                  class="max-w-xl text-lg leading-relaxed text-slate-400 md:text-xl"
+                >
+                  Desenvolvedor Frontend sênior especializado em criar
+                  interfaces modernas, rápidas e focadas na experiência do
+                  usuário final.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-4">
+                <button
+                  class="group flex h-14 min-w-[180px] items-center justify-center gap-2 rounded-xl bg-primary px-8 text-base font-bold text-background-dark shadow-[0_0_20px_rgba(19,236,218,0.3)] transition-all hover:bg-white hover:shadow-none"
+                >
+                  Ver Projetos
+                  <span
+                    class="material-symbols-outlined transition-transform group-hover:translate-x-1"
+                    >arrow_forward</span
+                  >
+                </button>
+                <button
+                  class="flex h-14 min-w-[180px] items-center justify-center rounded-xl border border-slate-700 bg-transparent px-8 text-base font-bold text-white transition-colors hover:bg-slate-800"
+                >
+                  Entrar em Contato
+                </button>
+              </div>
+              <!-- Tech Stack Subtle Row -->
+              <div class="mt-8 flex flex-col gap-4">
+                <p
+                  class="text-xs font-bold uppercase tracking-widest text-slate-500"
+                >
+                  Tecnologias que domino
+                </p>
+                <div
+                  class="flex flex-wrap gap-6 opacity-50 grayscale transition-all hover:grayscale-0"
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-white"
+                      >code</span
+                    >
+                    <span class="text-sm font-semibold text-white">React</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-white"
+                      >bolt</span
+                    >
+                    <span class="text-sm font-semibold text-white"
+                      >Next.js</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-white"
+                      >shield</span
+                    >
+                    <span class="text-sm font-semibold text-white"
+                      >TypeScript</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-white"
+                      >palette</span
+                    >
+                    <span class="text-sm font-semibold text-white"
+                      >Tailwind</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Hero Visual -->
+            <div class="relative flex justify-center lg:justify-end">
+              <div class="relative h-[400px] w-full max-w-[500px] md:h-[500px]">
+                <!-- Glassmorphism Card Behind -->
+                <div
+                  class="absolute -bottom-6 -left-6 z-20 hidden rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur-xl md:block"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex size-12 items-center justify-center rounded-full bg-primary/20 text-primary"
+                    >
+                      <span class="material-symbols-outlined">trending_up</span>
+                    </div>
+                    <div>
+                      <p class="text-sm font-bold text-white">+50 Projetos</p>
+                      <p class="text-xs text-slate-400">
+                        Entregues com sucesso
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Main Image Container -->
+                <div
+                  class="h-full w-full overflow-hidden rounded-3xl border-4 border-slate-800 bg-slate-900 shadow-2xl"
+                >
+                  <div
+                    class="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
+                    data-alt="Retrato profissional de um desenvolvedor frontend sorridente em um escritório moderno"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDdd_l7x_rxD9Dh7qcl5FnzQx1BWkAC_dmjrOjOay0uyqsdSNqbcR8I1hn82Ik_qb2Y0t7Lx6JR6G6l6hmLc4o1u_jMGb13aidlexIWWu7ERXhDmm_ilJBJNBmM1jDWdsHNHXb-kJLyKJIKOfKSkL1kAHQ3EfCDjxtXcCvt0gOgW1ncHcL6WQuzufdrVzv-ZgnB89lepyaP82gSoBnDcVC0NyQQ_p9D29xpYKBA2Bk7FZQHoKh0H4nSEOVMa6zyQiuoH6rq-g3_MwG1&quot;);
+                    "
+                  ></div>
+                </div>
+                <!-- Floating Decorative Elements -->
+                <div
+                  class="absolute -right-4 top-10 z-10 animate-bounce rounded-xl bg-background-dark p-3 shadow-xl ring-1 ring-white/10"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >javascript</span
+                  >
+                </div>
+                <div
+                  class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+                >
+                  <div
+                    class="h-64 w-64 rounded-full border border-primary/20 bg-primary/5"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Features Section -->
+        <section class="bg-slate-900/30 px-6 py-24 lg:px-10">
+          <div class="mx-auto max-w-7xl">
+            <div class="mb-16 flex flex-col gap-4">
+              <h2
+                class="text-3xl font-bold tracking-tight text-white md:text-4xl"
+              >
+                Especialidades Técnicas
+              </h2>
+              <p class="max-w-2xl text-slate-400">
+                Utilizo as ferramentas mais modernas do mercado para garantir
+                que seu produto digital seja escalável, acessível e extremamente
+                rápido.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <!-- Card 1 -->
+              <div
+                class="group rounded-2xl border border-white/5 bg-slate-900/50 p-8 transition-all hover:border-primary/50 hover:bg-slate-900"
+              >
+                <div
+                  class="mb-6 inline-flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark"
+                >
+                  <span class="material-symbols-outlined">code</span>
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-white">
+                  React &amp; Next.js
+                </h3>
+                <p class="text-sm leading-relaxed text-slate-400">
+                  Criação de SPAs e aplicações SSR com foco em SEO e performance
+                  excepcional de carregamento.
+                </p>
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="group rounded-2xl border border-white/5 bg-slate-900/50 p-8 transition-all hover:border-primary/50 hover:bg-slate-900"
+              >
+                <div
+                  class="mb-6 inline-flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark"
+                >
+                  <span class="material-symbols-outlined">shield</span>
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-white">TypeScript</h3>
+                <p class="text-sm leading-relaxed text-slate-400">
+                  Desenvolvimento orientado a tipos para garantir código
+                  robusto, escalável e fácil de manter a longo prazo.
+                </p>
+              </div>
+              <!-- Card 3 -->
+              <div
+                class="group rounded-2xl border border-white/5 bg-slate-900/50 p-8 transition-all hover:border-primary/50 hover:bg-slate-900"
+              >
+                <div
+                  class="mb-6 inline-flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark"
+                >
+                  <span class="material-symbols-outlined">palette</span>
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-white">Tailwind CSS</h3>
+                <p class="text-sm leading-relaxed text-slate-400">
+                  Design responsivo e sistemas de design customizados com a
+                  agilidade do framework utility-first.
+                </p>
+              </div>
+              <!-- Card 4 -->
+              <div
+                class="group rounded-2xl border border-white/5 bg-slate-900/50 p-8 transition-all hover:border-primary/50 hover:bg-slate-900"
+              >
+                <div
+                  class="mb-6 inline-flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark"
+                >
+                  <span class="material-symbols-outlined">auto_awesome</span>
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-white">UX/UI Motion</h3>
+                <p class="text-sm leading-relaxed text-slate-400">
+                  Animações fluidas e micro-interações que elevam o engajamento
+                  e a percepção de valor da marca.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer class="border-t border-white/5 bg-background-dark px-6 py-12">
+        <div
+          class="mx-auto max-w-7xl flex flex-col items-center justify-between gap-8 md:flex-row"
+        >
+          <div class="flex flex-col items-center gap-4 md:items-start">
+            <div class="flex items-center gap-2 text-white">
+              <div
+                class="size-6 bg-primary rounded-sm flex items-center justify-center text-background-dark"
+              >
+                <span class="material-symbols-outlined text-xs font-bold"
+                  >terminal</span
+                >
+              </div>
+              <span class="font-bold">DevPortfolio</span>
+            </div>
+            <p class="text-sm text-slate-500">
+              © 2024 Dev Portfolio. Todos os direitos reservados.
+            </p>
+          </div>
+          <div class="flex gap-8">
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined">link</span>
+            </a>
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined">hub</span>
+            </a>
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined">alternate_email</span>
+            </a>
+          </div>
+          <div class="flex gap-6">
+            <a
+              class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-white"
+              href="#"
+              >Privacidade</a
+            >
+            <a
+              class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-white"
+              href="#"
+              >Termos</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
