@@ -22,16 +22,16 @@ export default function About() {
         <div className="absolute inset-0 bg-grid-white [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
       </div>
 
-      <PageContainer className="relative z-10">
+      <PageContainer className="relative z-10 mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
               <Image
                 src={DevPortrait}
                 alt="Trabalhando no escritório"
-                width={600}
-                height={800}
-                className="w-full h-auto object-cover hover:grayscale-0 transition-all duration-700"
+                width={200}
+                height={300}
+                className="w-full object-cover hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
             </div>
@@ -47,7 +47,8 @@ export default function About() {
             </div>
           </div>
 
-          <div className="space-y-8 order-1 lg:order-2">
+          {/*text*/}
+          <div className="space-y-8 order-1 ml-3 lg:order-2">
             <div>
               <AnimatedBadge>Sobre Mim</AnimatedBadge>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6 leading-tight">
@@ -58,9 +59,11 @@ export default function About() {
                 .
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Minha abordagem combina design meticuloso com engenharia
-                robusta. Não apenas construo sites, mas crio ecossistemas
-                digitais que posicionam sua marca como líder de mercado.
+                Sou estudante de Sistemas de Informação e atuo como desenvolvedor FullStack Júnior, com foco em Front-End.
+                Crio websites responsivos e otimizadas para SEO, sempre alinhando design e código para transformar
+                ideias em soluções digitais funcionais e envolventes. <br /> 
+                Tenho experiência com React, TailwindCSS e Node.js, tecnologias que utilizo para desenvolver projetos que combinam 
+                inovação, usabilidade e resultados concretos para marcas e negócios.
               </p>
             </div>
 
@@ -68,7 +71,7 @@ export default function About() {
               {[
                 "Desenvolvimento focado em conversão e performance",
                 "Design moderno e acessível (UI/UX)",
-                "Código limpo, escalável e otimizado para SEO",
+                "Código limpo e otimizado para SEO",
                 "Comunicação clara e transparência total",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">

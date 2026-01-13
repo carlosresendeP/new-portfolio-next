@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button";
 import {
   FaArrowRight,
@@ -14,11 +15,36 @@ import {
   AnimatedBadge,
 } from "@/components/ui/page";
 import { links } from "@/lib/links";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import DevPotrait from '@/public/developer_portrait.png'
+
+
+
+
+const titles =[
+  "Desenvolvedor Frontend",
+  "Desenvolvedor Fullstack",
+  "Especialista em React",
+  "Criador de Soluções",
+]
 
 export default function Hero() {
+
+
+  const [titleIndex, setTitleIndex] = useState<number>(0);
+  const animateTitle = () => {
+    setTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(animateTitle, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <PageSection
-      className="relative min-h-[90vh] flex items-center bg-background pt-20 pb-12 overflow-hidden"
+      className="relative min-h-screen flex items-center bg-background pt-20 pb-12 overflow-hidden"
       aria-label="Introdução"
     >
       {/* Dynamic Background Elements */}
@@ -36,18 +62,29 @@ export default function Hero() {
             <AnimatedBadge>Disponível para novos projetos</AnimatedBadge>
           </div>
 
-          <div className="flex flex-col gap-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-foreground animate-fade-in-up animation-delay-100">
-              Transformando códigos em <br />
+          <div className="flex flex-col items-start justify-between gap-6 w-full">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground animate-fade-in-up animation-delay-100">
+              <span className="text-2xl md:text-3xl lg:text-4xl ml-1">Olá me chamo</span> <br />
               <span className="text-gradient-primary">
-                Experiências Digitais
+                Carlos Resende
               </span>{" "}
               <br />
-              de Impacto.
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={titleIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl md:text-4xl font-bold text-slate-300"
+                >
+                  {titles[titleIndex]}
+                </motion.p>
+              </AnimatePresence>
             </h1>
 
             <p className="max-w-xl text-lg md:text-xl leading-relaxed text-muted-foreground animate-fade-in-up animation-delay-200">
-              Crio soluções web escaláveis e de alta performance, focadas na
+              Crio soluções web de alta performance, focadas na
               melhor experiência de usuário e resultados de negócio.
             </p>
           </div>
@@ -120,11 +157,11 @@ export default function Hero() {
 
             <GradientCard className="rotate-2 hover:rotate-0 transition-transform duration-500">
               <Image
-                src="/developer_portrait.png"
+                src={DevPotrait}
                 alt="Desenvolvedor Profissional"
-                width={600}
-                height={700}
-                className="w-full h-auto object-cover rounded-2xl"
+                width={200}
+                height={300}
+                className="w-full h-full object-cover rounded-2xl"
                 priority
               />
             </GradientCard>

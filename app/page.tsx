@@ -12,24 +12,24 @@ import FAQ from "@/components/faq";
 import Contact from "@/components/contact";
 import CTA from "@/components/cta";
 import Footer from "@/components/footer";
+import { PageContainer } from "@/components/ui/page";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col w-full">
-      <Header />
-      <Hero />
-      {/* <LogoCloud /> */}
-      <About />
-      <Services />
-      <Process />
-      <Projects />
-      <TechStack />
-      {/* <Testimonials /> */}
-      {/* <CaseStudies /> */}
-      <FAQ />
-      <Contact />
-      <CTA />
-      <Footer />
+        <Hero />
+        {/* <LogoCloud /> */}
+        <About />
+        <Services />
+        <Process />
+        <Projects />
+        <TechStack />
+        {/* <Testimonials /> */}
+        {/* <CaseStudies /> */}
+        <FAQ />
+        <Contact />
+        <CTA />
+        <Footer />
     </div>
   );
 }
