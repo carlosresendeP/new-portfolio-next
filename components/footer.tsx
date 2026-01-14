@@ -1,5 +1,6 @@
 import { PageContainer } from "@/components/ui/page";
-import { FaGithub, FaLinkedin, FaTwitter, FaHeart } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6"
 import { links } from "@/lib/links";
 
 export default function Footer() {
@@ -38,7 +39,7 @@ export default function Footer() {
                   hover:bg-primary hover:text-muted hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
                   transition-all duration-300"
               >
-                <FaTwitter className="w-5 h-5" />
+                <FaSquareXTwitter className="w-5 h-5" />
               </a>
             </div>
           </div>

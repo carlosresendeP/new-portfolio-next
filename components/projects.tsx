@@ -4,7 +4,7 @@ import {
   AnimatedBadge,
 } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
-import { FaArrowUp, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
 
 const projects = [
@@ -17,6 +17,7 @@ const projects = [
     techs: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
     link: "#",
     github: "#",
+    featured: true,
   },
   {
     title: "HealthTrack App",
@@ -27,6 +28,7 @@ const projects = [
     techs: ["React", "Node.js", "Prisma", "Recharts"],
     link: "#",
     github: "#",
+    featured: false,
   },
   {
     title: "Fintech Landing Page",
@@ -37,6 +39,40 @@ const projects = [
     techs: ["Astro", "Framer Motion", "React"],
     link: "#",
     github: "#",
+    featured: false,
+  },
+  {
+    title: "AI Content Generator",
+    category: "SaaS / AI",
+    image: "/project-1.jpg",
+    description:
+      "Ferramenta de geração de conteúdo com IA, integração com GPT-4 e sistema de créditos.",
+    techs: ["Next.js", "OpenAI", "Stripe"],
+    link: "#",
+    github: "#",
+    featured: true,
+  },
+  {
+    title: "Portfolio CMS",
+    category: "Fullstack",
+    image: "/project-2.jpg",
+    description:
+      "Sistema de gerenciamento de conteúdo para portfólios com editor visual.",
+    techs: ["React", "Node.js", "MongoDB"],
+    link: "#",
+    github: "#",
+    featured: false,
+  },
+  {
+    title: "Crypto Dashboard",
+    category: "Web3 / Dashboard",
+    image: "/project-3.jpg",
+    description:
+      "Dashboard de criptomoedas com dados em tempo real e análise de mercado.",
+    techs: ["React", "Web3.js", "Chart.js"],
+    link: "#",
+    github: "#",
+    featured: false,
   },
 ];
 
@@ -54,137 +90,152 @@ export default function Projects() {
       </div>
 
       <PageContainer className="relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <AnimatedBadge>Portfolio</AnimatedBadge>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 mt-4">
-            Projetos que{" "}
-            <span className="text-gradient-primary">fazem a diferença</span>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center justify-center mb-6">
+            <span className="px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold tracking-[0.2em] text-primary uppercase">
+              Trabalhos
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
+            Ultimos Projetos
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Soluções reais que geraram resultados mensuráveis para meus clientes
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative bg-card border border-border rounded-2xl overflow-hidden
-                hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10
-                transition-all duration-500"
-            >
-              {/* Image Container */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={600}
-                  height={450}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {projects.map((project, index) => {
+            // Define grid layout patterns
+            const isLargeFeatured = index === 0; // First project takes 2 columns
+            const isSecondaryFeatured = index === 3; // Fourth project takes 2 rows
 
-                {/* Overlay on Hover */}
+            return (
+              <div
+                key={index}
+                className={`group relative bg-card border border-border/50 rounded-xl overflow-hidden
+                  hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20
+                  transition-all duration-500
+                  ${isLargeFeatured ? "md:col-span-2 md:row-span-1" : ""}
+                  ${isSecondaryFeatured ? "lg:row-span-2" : ""}
+                `}
+              >
+                {/* Accent Tab */}
+                <div className="absolute top-0 left-6 z-20">
+                  <div className="h-1 w-16 bg-gradient-to-r from-primary to-chart-2 rounded-b-sm" />
+                </div>
+
+                {/* Image Container */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent 
-                  opacity-0 group-hover:opacity-100 transition-all duration-500
-                  flex items-end justify-center pb-6 gap-3"
+                  className={`relative overflow-hidden bg-muted ${
+                    isLargeFeatured
+                      ? "aspect-[21/9]"
+                      : isSecondaryFeatured
+                        ? "aspect-[4/5]"
+                        : "aspect-[4/3]"
+                  }`}
                 >
-                  <Button
-                    size="sm"
-                    className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
-                      shadow-lg hover:shadow-xl hover:shadow-primary/30 transition-all"
-                    asChild
-                  >
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaExternalLinkAlt className="w-4 h-4 mr-2" />
-                      Ver Projeto
-                    </a>
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="rounded-full border-primary/30 hover:bg-primary/10"
-                    asChild
-                  >
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaGithub className="w-4 h-4 mr-2" />
-                      Código
-                    </a>
-                  </Button>
-                </div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
 
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span
-                    className="px-3 py-1 bg-background/90 backdrop-blur-sm border border-border rounded-full 
-                    text-xs font-semibold text-primary"
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60" />
+
+                  {/* Hover Overlay with Actions */}
+                  <div
+                    className="absolute inset-0 bg-background/95 backdrop-blur-sm
+                    opacity-0 group-hover:opacity-100 transition-all duration-500
+                    flex flex-col items-center justify-center gap-4 p-6"
                   >
-                    {project.category}
-                  </span>
-                </div>
-              </div>
+                    <p className="text-muted-foreground text-sm text-center max-w-md leading-relaxed">
+                      {project.description}
+                    </p>
 
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
-                    {project.description}
-                  </p>
-                </div>
+                    <div className="flex gap-3">
+                      <Button
+                        size="sm"
+                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
+                          shadow-lg hover:shadow-xl hover:shadow-primary/40 transition-all"
+                        asChild
+                      >
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaExternalLinkAlt className="w-3.5 h-3.5 mr-2" />
+                          Ver Projeto
+                        </a>
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full border-primary/30 hover:bg-primary/10 hover:border-primary/50"
+                        asChild
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaGithub className="w-3.5 h-3.5 mr-2" />
+                          Código
+                        </a>
+                      </Button>
+                    </div>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2">
-                  {project.techs.map((tech) => (
+                    {/* Tech Stack in Overlay */}
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {project.techs.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
+                            text-xs font-medium text-primary"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Category Badge */}
+                  <div className="absolute top-6 right-6 z-10">
                     <span
-                      key={tech}
-                      className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
-                        text-xs font-medium text-primary"
+                      className="px-3 py-1.5 bg-background/90 backdrop-blur-md border border-border/50 rounded-lg
+                      text-xs font-semibold text-primary shadow-lg"
                     >
-                      {tech}
+                      {project.category}
                     </span>
-                  ))}
-                </div>
-
-                {/* Bottom Accent */}
-                <div className="pt-4 border-t border-border/50">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Ver detalhes</span>
-                    <FaArrowUp
-                      className="w-4 h-4 text-primary opacity-0 -translate-x-2 
-                      group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                    />
                   </div>
                 </div>
+
+                {/* Content - Always Visible */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Button
-            variant="outline"
             size="lg"
-            className="group relative rounded-full border-primary/30 px-6 py-3 h-16 bg-primary overflow-hidden
+            className="group relative rounded-full px-8 py-6 h-auto bg-background border-2 border-primary/30
               transition-all duration-300 ease-out
-              hover:scale-105 hover:border-primary/50 hover:bg-primary/10
-              hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.3),0_0_40px_rgba(var(--primary-rgb),0.15)]
+              hover:scale-105 hover:border-primary/60 hover:bg-primary/5
+              hover:shadow-[0_0_30px_rgba(1,206,196,0.3)]
               active:scale-95"
           >
-            <span className="relative z-10 flex items-center gap-2 text-foreground">
-              Ver todos os projetos
-              <FaArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            <span className="relative z-10 flex items-center gap-3 text-foreground font-semibold text-base">
+              Ver todos
+              <FaArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
           </Button>
         </div>

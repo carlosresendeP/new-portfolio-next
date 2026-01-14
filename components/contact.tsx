@@ -12,7 +12,7 @@ import { FaEnvelope, FaCommentDots, FaPaperPlane } from "react-icons/fa";
 const Contact = () => {
   return (
     <PageSection
-      className="bg-background py-24 relative overflow-hidden"
+      className="bg-background bg-linear-to-b from-background to-card py-24 relative overflow-hidden"
       aria-label="Contato"
     >
       {/* Dynamic Background Elements */}
