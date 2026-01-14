@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, FormEvent } from "react";
 import {
   PageSection,
   PageContainer,
@@ -8,8 +11,70 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { FaEnvelope, FaCommentDots, FaPaperPlane } from "react-icons/fa";
+import { toast } from "sonner";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Mensagem enviada com sucesso!", {
+          description: "Entrarei em contato em breve. Obrigado!",
+          duration: 5000,
+        });
+        // Limpar formulário
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        toast.error("Erro ao enviar mensagem", {
+          description: data.error || "Tente novamente mais tarde.",
+          duration: 5000,
+        });
+      }
+    } catch (error) {
+      console.error("Erro:", error);
+      toast.error("Erro ao enviar mensagem", {
+        description: "Verifique sua conexão e tente novamente.",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <PageSection
       className="bg-background bg-linear-to-b from-background to-card py-24 relative overflow-hidden"
@@ -68,7 +133,10 @@ const Contact = () => {
             </div>
           </div>
 
-          <form className="space-y-6 p-8 rounded-2xl bg-card border border-border/50 shadow-xl">
+          <form
+            className="space-y-6 p-8 rounded-2xl bg-card shadow-xl"
+            onSubmit={handleSubmit}
+          >
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-foreground">
@@ -77,7 +145,10 @@ const Contact = () => {
                 <Input
                   id="name"
                   placeholder="Seu nome"
-                  className="bg-background border-border/50 focus:border-primary"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="bg-background border-border/50 focus:border-primary outline-none border-none text-foreground font-semibold"
                 />
               </div>
               <div className="space-y-2">
@@ -88,20 +159,42 @@ const Contact = () => {
                   id="email"
                   type="email"
                   placeholder="seu@email.com"
-                  className="bg-background border-border/50 focus:border-primary"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="bg-background border-border/50 focus:border-primary outline-none border-none text-foreground font-semibold "
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="subject" className="text-foreground">
-                Assunto
-              </Label>
-              <Input
-                id="subject"
-                placeholder="Sobre o que vamos falar?"
-                className="bg-background border-border/50 focus:border-primary"
-              />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Label htmlFor="subject" className="text-foreground">
+                  Assunto
+                </Label>
+                <Input
+                  id="subject"
+                  placeholder="Sobre o que vamos falar?"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="bg-background border-border/50 focus:border-primary outline-none border-none text-foreground font-semibold "
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-foreground">
+                  Telefone
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="Seu telefone"
+                  value={formData.phone}
+                  required
+                  onChange={handleChange}
+                  className="bg-background outline-none border-none text-foreground font-semibold"
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
@@ -111,21 +204,28 @@ const Contact = () => {
               <Textarea
                 id="message"
                 placeholder="Me conte mais sobre seu projeto..."
-                className="min-h-[150px] bg-background border-border/50 focus:border-primary"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="min-h-[150px] bg-background border-border/50 text-foreground font-semibold focus:border-primary outline-none border-none"
               />
             </div>
 
             <Button
-              className="group relative w-full h-14 text-lg rounded-full bg-success overflow-hidden
+              type="submit"
+              disabled={isSubmitting}
+              className="group relative w-full h-14 text-lg font-semibold rounded-full bg-primary overflow-hidden
               transition-all duration-300 ease-out
-              hover:scale-105 hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.6),0_0_40px_rgba(var(--primary-rgb),0.4)]
-              before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
+              hover:bg-success hover:text-card
+              hover:scale-105 hover:shadow-[0_0_20px_rgba(4,255,138,0.6),0_0_40px_rgba(4,255,138,0.4)]
+              before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/20 before:to-transparent
               before:translate-x-[-200%] before:transition-transform before:duration-700
               hover:before:translate-x-[200%]
-              active:scale-95"
+              active:scale-95
+              disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               <span className="relative z-10 flex items-center gap-2 justify-center">
-                Enviar Mensagem
+                {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
                 <FaPaperPlane className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
               <span className="absolute inset-0 rounded-full bg-primary opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
