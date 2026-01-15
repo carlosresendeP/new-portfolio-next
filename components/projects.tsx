@@ -1,81 +1,22 @@
-import {
-  PageSection,
-  PageContainer,
-} from "@/components/ui/page";
+import { PageSection, PageContainer } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
 import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
+import { getProjects } from "@/lib/data";
+import { Project } from "@prisma/client";
 
-const projects = [
-  {
-    title: "EcoMarkt E-commerce",
-    category: "Fullstack / Next.js",
-    image: "/project-1.jpg",
-    description:
-      "Plataforma completa de e-commerce com dashboard administrativo, pagamentos via Stripe e gestão de inventário em tempo real.",
-    techs: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
-    link: "#",
-    github: "#",
-    featured: true,
-  },
-  {
-    title: "HealthTrack App",
-    category: "Web App / Dashboard",
-    image: "/project-2.jpg",
-    description:
-      "Aplicação de monitoramento de saúde com gráficos interativos, autenticação segura e integração com wearables.",
-    techs: ["React", "Node.js", "Prisma", "Recharts"],
-    link: "#",
-    github: "#",
-    featured: false,
-  },
-  {
-    title: "Fintech Landing Page",
-    category: "Marketing / UI Developer",
-    image: "/project-3.jpg",
-    description:
-      "Landing page de alta conversão para startup financeira, com animações complexas e performance score de 100/100.",
-    techs: ["Astro", "Framer Motion", "React"],
-    link: "#",
-    github: "#",
-    featured: false,
-  },
-  {
-    title: "AI Content Generator",
-    category: "SaaS / AI",
-    image: "/project-1.jpg",
-    description:
-      "Ferramenta de geração de conteúdo com IA, integração com GPT-4 e sistema de créditos.",
-    techs: ["Next.js", "OpenAI", "Stripe"],
-    link: "#",
-    github: "#",
-    featured: true,
-  },
-  {
-    title: "Portfolio CMS",
-    category: "Fullstack",
-    image: "/project-2.jpg",
-    description:
-      "Sistema de gerenciamento de conteúdo para portfólios com editor visual.",
-    techs: ["React", "Node.js", "MongoDB"],
-    link: "#",
-    github: "#",
-    featured: false,
-  },
-  {
-    title: "Crypto Dashboard",
-    category: "Web3 / Dashboard",
-    image: "/project-3.jpg",
-    description:
-      "Dashboard de criptomoedas com dados em tempo real e análise de mercado.",
-    techs: ["React", "Web3.js", "Chart.js"],
-    link: "#",
-    github: "#",
-    featured: false,
-  },
-];
+export default async function Projects() {
+  const projectsData = await getProjects(7);
 
-export default function Projects() {
+  // Map database fields to UI structure if needed, or use directly
+  const projects = projectsData.map((p: Project) => ({
+    ...p,
+    image: p.imageUrl,
+    link: p.liveUrl || "#",
+    github: p.gitUrl || "#",
+    techs: p.technologies,
+  }));
+
   return (
     <PageSection
       id="projects"
@@ -104,123 +45,141 @@ export default function Projects() {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-          {projects.map((project, index) => {
-            // Define grid layout patterns
-            const isLargeFeatured = index === 0; // First project takes 2 columns
-            const isSecondaryFeatured = index === 3; // Fourth project takes 2 rows
+          {projects.length === 0 ? (
+            <div className="col-span-full text-center py-20 text-muted-foreground">
+              <p>
+                Nenhum projeto encontrado.
+              </p>
+            </div>
+          ) : (
+            projects.map((project, index) => {
+              // Define grid layout patterns
+              const isLargeFeatured = index === 0; // First project takes 2 columns
+              const isSecondaryFeatured = index === 3; // Fourth project takes 2 rows
 
-            return (
-              <div
-                key={index}
-                className={`group relative bg-card border border-border/50 rounded-xl overflow-hidden
-                  hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20
-                  transition-all duration-500
-                  ${isLargeFeatured ? "md:col-span-2 md:row-span-1" : ""}
-                  ${isSecondaryFeatured ? "lg:row-span-2" : ""}
-                `}
-              >
-                {/* Accent Tab */}
-                <div className="absolute top-0 left-6 z-20">
-                  <div className="h-1 w-16 bg-gradient-to-r from-primary to-chart-2 rounded-b-sm" />
-                </div>
-
-                {/* Image Container */}
+              return (
                 <div
-                  className={`relative overflow-hidden bg-muted ${
-                    isLargeFeatured
-                      ? "aspect-[21/9]"
-                      : isSecondaryFeatured
-                        ? "aspect-[4/5]"
-                        : "aspect-[4/3]"
-                  }`}
+                  key={project.id}
+                  className={`group relative bg-card border border-border/50 rounded-xl overflow-hidden
+                    hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20
+                    transition-all duration-500
+                    ${isLargeFeatured ? "md:col-span-2 md:row-span-1" : ""}
+                    ${isSecondaryFeatured ? "lg:row-span-2" : ""}
+                  `}
                 >
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  {/* Accent Tab */}
+                  <div className="absolute top-0 left-6 z-20">
+                    <div className="h-1 w-16 bg-gradient-to-r from-primary to-chart-2 rounded-b-sm" />
+                  </div>
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60" />
-
-                  {/* Hover Overlay with Actions */}
+                  {/* Image Container */}
                   <div
-                    className="absolute inset-0 bg-background/95 backdrop-blur-sm
-                    opacity-0 group-hover:opacity-100 transition-all duration-500
-                    flex flex-col items-center justify-center gap-4 p-6"
+                    className={`relative overflow-hidden bg-muted ${
+                      isLargeFeatured
+                        ? "aspect-[21/9]"
+                        : isSecondaryFeatured
+                          ? "aspect-[4/5]"
+                          : "aspect-[4/3]"
+                    }`}
                   >
-                    <p className="text-muted-foreground text-sm text-center max-w-md leading-relaxed">
-                      {project.description}
-                    </p>
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
+                        Sem Imagem
+                      </div>
+                    )}
 
-                    <div className="flex gap-3">
-                      <Button
-                        size="sm"
-                        className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
-                          shadow-lg hover:shadow-xl hover:shadow-primary/40 transition-all"
-                        asChild
-                      >
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FaExternalLinkAlt className="w-3.5 h-3.5 mr-2" />
-                          Ver Projeto
-                        </a>
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="rounded-full border-primary/30 hover:bg-primary/10 hover:border-primary/50"
-                        asChild
-                      >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FaGithub className="w-3.5 h-3.5 mr-2" />
-                          Código
-                        </a>
-                      </Button>
-                    </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60" />
 
-                    {/* Tech Stack in Overlay */}
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {project.techs.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
-                            text-xs font-medium text-primary"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Category Badge */}
-                  <div className="absolute top-6 right-6 z-10">
-                    <span
-                      className="px-3 py-1.5 bg-background/90 backdrop-blur-md border border-border/50 rounded-lg
-                      text-xs font-semibold text-primary shadow-lg"
+                    {/* Hover Overlay with Actions */}
+                    <div
+                      className="absolute inset-0 bg-background/95 backdrop-blur-sm
+                      opacity-0 group-hover:opacity-100 transition-all duration-500
+                      flex flex-col items-center justify-center gap-4 p-6"
                     >
-                      {project.category}
-                    </span>
+                      <p className="text-muted-foreground text-sm text-center max-w-md leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+
+                      <div className="flex gap-3">
+                        {project.link !== "#" && (
+                          <Button
+                            size="sm"
+                            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
+                              shadow-lg hover:shadow-xl hover:shadow-primary/40 transition-all"
+                            asChild
+                          >
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaExternalLinkAlt className="w-3.5 h-3.5 mr-2" />
+                              Ver Projeto
+                            </a>
+                          </Button>
+                        )}
+                        {project.github !== "#" && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="rounded-full border-primary/30 hover:bg-primary/10 hover:border-primary/50"
+                            asChild
+                          >
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaGithub className="w-3.5 h-3.5 mr-2" />
+                              Código
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+
+                      {/* Tech Stack in Overlay */}
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {project.techs.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
+                              text-xs font-medium text-primary"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Category Badge */}
+                    <div className="absolute top-6 right-6 z-10">
+                      <span
+                        className="px-3 py-1.5 bg-background/90 backdrop-blur-md border border-border/50 rounded-lg
+                        text-xs font-semibold text-primary shadow-lg"
+                      >
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content - Always Visible */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
                   </div>
                 </div>
-
-                {/* Content - Always Visible */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
 
         {/* View All Button */}
