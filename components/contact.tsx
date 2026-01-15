@@ -77,6 +77,7 @@ const Contact = () => {
 
   return (
     <PageSection
+      id="contact"
       className="bg-background bg-linear-to-b from-background to-card py-24 relative overflow-hidden"
       aria-label="Contato"
     >
@@ -84,7 +85,7 @@ const Contact = () => {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute -right-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
         <div className="absolute -left-20 bottom-20 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px] animate-float" />
-        <div className="absolute inset-0 bg-grid-white [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
+        <div className="absolute inset-0 bg-grid-white mask-[linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
       </div>
 
       <PageContainer className="relative z-10">

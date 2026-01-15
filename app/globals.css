@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
 :root {
   /* Backgrounds - Neutral Dark Theme (Modern & Clean) */
   --background: #0a0a0a; /* Neutral Rich Black */

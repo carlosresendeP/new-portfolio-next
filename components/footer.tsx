@@ -49,8 +49,7 @@ export default function Footer() {
             <ul className="space-y-4 text-muted-foreground">
               <li>
                 <a
-                  href={links.github}
-                  target="_blank"
+                  href="#about"
                   className="  hover:text-primary transition-colors"
                 >
                   Sobre
@@ -58,8 +57,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={links.linkedin}
-                  target="_blank"
+                  href="#projects"
                   className="hover:text-primary transition-colors"
                 >
                   Projetos
@@ -67,8 +65,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={links.twitterx}
-                  target="_blank"
+                  href="#services"
                   className="hover:text-primary transition-colors"
                 >
                   Serviços
@@ -76,8 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={links.whatsapp}
-                  target="_blank"
+                  href="#contact"
                   className="hover:text-primary transition-colors"
                 >
                   Contato

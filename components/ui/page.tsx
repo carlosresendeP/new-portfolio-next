@@ -7,7 +7,11 @@ export const PageContainer = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return <div className={cn("space-y-6 p-5 mx-auto max-w-7xl", className)}>{children}</div>;
+  return (
+    <div className={cn("space-y-6 p-5 mx-auto max-w-7xl", className)}>
+      {children}
+    </div>
+  );
 };
 
 export const PageSectionTitle = ({
@@ -18,17 +22,22 @@ export const PageSectionTitle = ({
   return <h3 className="text-xs font-bold uppercase mb-4">{children}</h3>;
 };
 
+interface PageSectionProps extends React.HTMLAttributes<HTMLElement> {
+  children: React.ReactNode;
+  className?: string;
+  as?: "section" | "article" | "div";
+}
+
 export const PageSection = ({
   children,
   className,
   as: Component = "section",
-}: {
-  children: React.ReactNode;
-  className?: string;
-  as?: "section" | "article" | "div";
-}) => {
+  ...props
+}: PageSectionProps) => {
   return (
-    <Component className={cn("py-24 px-6", className)}>{children}</Component>
+    <Component className={cn("py-24 px-6", className)} {...props}>
+      {children}
+    </Component>
   );
 };
 

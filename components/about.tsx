@@ -1,7 +1,6 @@
 import {
   PageSection,
   PageContainer,
-  PageSectionTitle,
   AnimatedBadge,
 } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,7 @@ import DevPortrait from "@/public/developer_portrait.png";
 export default function About() {
   return (
     <PageSection
+      id="about"
       className="bg-background py-24 relative overflow-hidden"
       aria-label="Sobre mim"
     >
@@ -19,7 +19,7 @@ export default function About() {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute -right-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
         <div className="absolute -left-20 bottom-20 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px] animate-float" />
-        <div className="absolute inset-0 bg-grid-white [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
+        <div className="absolute inset-0 bg-grid-white mask-[linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
       </div>
 
       <PageContainer className="relative z-10 mx-auto max-w-7xl">
@@ -59,11 +59,14 @@ export default function About() {
                 .
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Sou estudante de Sistemas de Informação e atuo como desenvolvedor FullStack Júnior, com foco em Front-End.
-                Crio websites responsivos e otimizadas para SEO, sempre alinhando design e código para transformar
-                ideias em soluções digitais funcionais e envolventes. <br /> 
-                Tenho experiência com React, TailwindCSS e Node.js, tecnologias que utilizo para desenvolver projetos que combinam 
-                inovação, usabilidade e resultados concretos para marcas e negócios.
+                Sou estudante de Sistemas de Informação e atuo como
+                desenvolvedor FullStack Júnior, com foco em Front-End. Crio
+                websites responsivos e otimizadas para SEO, sempre alinhando
+                design e código para transformar ideias em soluções digitais
+                funcionais e envolventes. <br />
+                Tenho experiência com React, TailwindCSS e Node.js, tecnologias
+                que utilizo para desenvolver projetos que combinam inovação,
+                usabilidade e resultados concretos para marcas e negócios.
               </p>
             </div>
 
@@ -86,7 +89,7 @@ export default function About() {
             text-primary-foreground font-semibold overflow-hidden
             transition-all duration-300 ease-out
             hover:scale-105 hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.6),0_0_40px_rgba(var(--primary-rgb),0.4),0_0_60px_rgba(var(--primary-rgb),0.2)]
-            before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
+            before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/20 before:to-transparent
             before:translate-x-[-200%] before:transition-transform before:duration-700
             hover:before:translate-x-[200%]
             active:scale-95"
