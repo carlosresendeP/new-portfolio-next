@@ -6,10 +6,36 @@ import { getProjects } from "@/lib/data";
 import { Project } from "@prisma/client";
 
 export default async function Projects() {
-  const projectsData = await getProjects(7);
+  const projectsData = await getProjects(); // Fetch all to sort in memory
 
-  // Map database fields to UI structure if needed, or use directly
-  const projects = projectsData.map((p: Project) => ({
+  // Desired order (Newest -> Oldest) matching the seed data reverse order
+  const orderedTitles = [
+    "Aparatus Mobile - SaaS para Agendamentos de Barbearias",
+    "Site de Nutricionista - Dr.Ana Barbosa",
+    "Site de Nutricionista - Clarisse Nutri",
+    "Net Gestão",
+    "Barber Elite",
+    "Confeitaria Doce Encanto",
+    "Performance Master",
+    "Tradição Vidros",
+    "Dr. Marina Silva - Neuropsicóloga",
+  ];
+
+  const sortedProjects = [...projectsData].sort((a, b) => {
+    const indexA = orderedTitles.indexOf(a.title);
+    const indexB = orderedTitles.indexOf(b.title);
+
+    // If both found, sort by index
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    // If only A found, it comes first
+    if (indexA !== -1) return -1;
+    // If only B found, it comes first
+    if (indexB !== -1) return 1;
+    // If neither, keep original order (fallback to DB sort)
+    return 0;
+  });
+
+  const projects = sortedProjects.map((p: Project) => ({
     ...p,
     image: p.imageUrl,
     link: p.liveUrl || "#",
@@ -47,9 +73,7 @@ export default async function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {projects.length === 0 ? (
             <div className="col-span-full text-center py-20 text-muted-foreground">
-              <p>
-                Nenhum projeto encontrado.
-              </p>
+              <p>Nenhum projeto encontrado.</p>
             </div>
           ) : (
             projects.map((project, index) => {
@@ -108,7 +132,7 @@ export default async function Projects() {
                         {project.description}
                       </p>
 
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 item-center justify-center">
                         {project.link !== "#" && (
                           <Button
                             size="sm"
@@ -120,9 +144,10 @@ export default async function Projects() {
                               href={project.link}
                               target="_blank"
                               rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 px-4 py-2"
                             >
-                              <FaExternalLinkAlt className="w-3.5 h-3.5 mr-2" />
-                              Ver Projeto
+                              <FaExternalLinkAlt className="w-3.5 h-3.5" />
+                              <span>Ver Projeto</span>
                             </a>
                           </Button>
                         )}
@@ -130,13 +155,14 @@ export default async function Projects() {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="rounded-full border-primary/30 hover:bg-primary/10 hover:border-primary/50"
+                            className="px-3 py-2 rounded-full text-foreground hover:text-primary border-primary/30 hover:bg-primary/10 hover:border-primary/50 flex items-center justify-center gap-2"
                             asChild
                           >
                             <a
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 text-sm"
                             >
                               <FaGithub className="w-3.5 h-3.5 mr-2" />
                               Código

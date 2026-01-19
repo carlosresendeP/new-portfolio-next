@@ -2,7 +2,7 @@
 
 import { useState, useEffect, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
-import { PageSection, PageContainer } from "@/components/ui/page";
+import { PageSection } from "@/components/ui/page";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -226,7 +226,7 @@ export default function AdminPage() {
   );
 
   return (
-    <PageContainer className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
       {/* Dynamic Background Elements */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute -right-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[120px] animate-pulse" />
@@ -243,13 +243,13 @@ export default function AdminPage() {
               Gerencie seus projetos e portfólio.
             </p>
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={handleLogout} className="gap-2">
+          <div className="flex gap-2 items-center justify-center">
+            <Button variant="outline" onClick={handleLogout} className="gap-2 p-2 text-foreground flex items-center justify-center">
               <FaSignOutAlt className="w-4 h-4" /> Sair
             </Button>
             <Button
               onClick={handleOpenCreate}
-              className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-2 p-2 bg-primary text-primary-foreground hover:bg-primary/90"
             >
               <FaPlus className="w-4 h-4" /> Novo Projeto
             </Button>
@@ -440,31 +440,33 @@ export default function AdminPage() {
                   : "Preencha as informações do novo projeto."}
               </SheetDescription>
             </SheetHeader>
-            <form onSubmit={handleSubmit} className="space-y-6 mt-6">
+            <form onSubmit={handleSubmit} className="space-y-6 mt-6 px-4">
               <div className="space-y-2">
-                <Label htmlFor="title">Título do Projeto</Label>
+                <Label htmlFor="title" className="text-foreground font-semibold text-sm">Título do Projeto</Label>
                 <Input
                   name="title"
                   value={formData.title}
                   onChange={handleChange}
                   required
                   placeholder="Ex: E-commerce V1"
+                  className="text-foreground"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="category">Categoria</Label>
+                  <Label htmlFor="category" className="text-foreground font-semibold text-sm">Categoria</Label>
                   <Input
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
                     required
                     placeholder="Ex: Fullstack"
+                    className="text-foreground"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Imagem de Capa</Label>
+                  <Label htmlFor="image-upload" className="text-foreground font-semibold text-sm">Imagem de Capa</Label>
                   <label
                     htmlFor="image-upload"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer hover:bg-muted/50 transition-colors items-center gap-2 text-muted-foreground"
@@ -498,7 +500,7 @@ export default function AdminPage() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="description">Descrição</Label>
+                <Label htmlFor="description" className="text-foreground font-semibold text-sm">Descrição</Label>
                 <Textarea
                   name="description"
                   value={formData.description}
@@ -506,32 +508,34 @@ export default function AdminPage() {
                   required
                   placeholder="Uma breve descrição..."
                   rows={4}
+                  className="text-foreground"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="gitUrl">GitHub URL</Label>
+                  <Label htmlFor="gitUrl" className="text-foreground font-semibold text-sm">GitHub URL</Label>
                   <div className="relative">
                     <FaGithub className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input
                       name="gitUrl"
                       value={formData.gitUrl}
                       onChange={handleChange}
-                      className="pl-9"
+                      className="pl-9 text-foreground"
                       placeholder="https://github.com/..."
+
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="liveUrl">Live URL</Label>
+                  <Label htmlFor="liveUrl" className="text-foreground font-semibold text-sm" >Live URL</Label>
                   <div className="relative">
                     <FaExternalLinkAlt className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input
                       name="liveUrl"
                       value={formData.liveUrl}
                       onChange={handleChange}
-                      className="pl-9"
+                      className="pl-9 text-foreground"
                       placeholder="https://..."
                     />
                   </div>
@@ -539,13 +543,14 @@ export default function AdminPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="technologies">Tecnologias</Label>
+                <Label htmlFor="technologies" className="text-foreground font-semibold text-sm">Tecnologias</Label>
                 <Input
                   name="technologies"
                   value={formData.technologies}
                   onChange={handleChange}
                   required
                   placeholder="React, Node.js, Next.js (separados por vírgula)"
+                  className="text-foreground"
                 />
                 <p className="text-[10px] text-muted-foreground">
                   Separe por vírgulas.
@@ -553,12 +558,13 @@ export default function AdminPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="tags">Tags</Label>
+                <Label htmlFor="tags" className="text-foreground font-semibold text-sm">Tags</Label>
                 <Input
                   name="tags"
                   value={formData.tags}
                   onChange={handleChange}
                   placeholder="Frontend, UI, API (separados por vírgula)"
+                  className="text-foreground"
                 />
               </div>
 
@@ -568,10 +574,12 @@ export default function AdminPage() {
                     type="button"
                     variant="ghost"
                     onClick={() => setIsSheetOpen(false)}
+                    className="text-foreground"
                   >
                     Cancelar
                   </Button>
-                  <Button type="submit">
+                  <Button type="submit" className="text-foreground bg-primary py-2 px-4  font-semibold hover:bg-success 
+                  active:translate-y-1 active:scale-95">
                     {isEditing ? "Salvar Alterações" : "Criar Projeto"}
                   </Button>
                 </div>
@@ -580,6 +588,6 @@ export default function AdminPage() {
           </SheetContent>
         </Sheet>
       </PageSection>
-    </PageContainer>
+    </div>
   );
 }

@@ -5,10 +5,10 @@ import {
 } from "@/components/ui/page";
 
 import { RiTailwindCssFill } from "react-icons/ri";
+import { BiLogoPostgresql } from "react-icons/bi";
 import { SiTypescript } from "react-icons/si";
 import {
   FaCode,
-  FaDatabase,
   FaHtml5,
   FaCss3,
   FaJs,
@@ -26,7 +26,7 @@ const technologies = [
   { name: "TypeScript", icon: SiTypescript, category: "Languages" },
   { name: "Tailwind CSS", icon: RiTailwindCssFill, category: "Styling" },
   { name: "Node.js", icon: FaNodeJs, category: "Backend" },
-  { name: "PostgreSQL", icon: FaDatabase, category: "Database" },
+  { name: "PostgreSQL", icon: BiLogoPostgresql, category: "Database" },
 ];
 
 export default function TechStack() {
@@ -50,7 +50,7 @@ export default function TechStack() {
             <span className="text-gradient-primary">domino</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Tecnologias modernas para criar soluções robustas e escaláveis
+            Tecnologias modernas para criar soluções robustas
           </p>
         </div>
 

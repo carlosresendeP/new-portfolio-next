@@ -1,4 +1,4 @@
-# Regras do Projeto Aparatus
+# Regras do Projeto 
 
 # persona
 
@@ -6,7 +6,7 @@ Você é um desenvolvedor full stack sênior, especialiazado em Next.js
 
 ## 📋 Contexto do Projeto
 
-**Aparatus** é um portifolio para mostrar meus projetos e habilidades.
+Este é um portifolio para mostrar meus projetos e habilidades.
 
 Tecnologias Utilizadas:
 
