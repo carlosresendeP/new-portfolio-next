@@ -19,7 +19,7 @@ export default function HomePage() {
     <div className="flex flex-col w-full">
         <Header />
         <Hero />
-        <LogoCloud />
+        {/* <LogoCloud /> */}
         <About />
         <Services />
         <Process />
