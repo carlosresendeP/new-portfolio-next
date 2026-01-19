@@ -86,19 +86,19 @@ export default async function Projects() {
                   key={project.id}
                   className={`group relative bg-card border border-border/50 rounded-xl overflow-hidden
                     hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20
-                    transition-all duration-500
+                  transition-all duration-500 w-full h-full
                     ${isLargeFeatured ? "md:col-span-2 md:row-span-1" : ""}
-                    ${isSecondaryFeatured ? "lg:row-span-2" : ""}
+                    ${isSecondaryFeatured ? "lg:row-span-3" : ""}
                   `}
                 >
                   {/* Accent Tab */}
                   <div className="absolute top-0 left-6 z-20">
-                    <div className="h-1 w-16 bg-gradient-to-r from-primary to-chart-2 rounded-b-sm" />
+                    <div className="h-1 w-16 bg-linear-to-r from-primary to-chart-2 rounded-b-sm" />
                   </div>
 
                   {/* Image Container */}
                   <div
-                    className={`relative overflow-hidden bg-muted ${
+                    className={`relative overflow-hidden bg-muted h-full ${
                       isLargeFeatured
                         ? "aspect-[21/9]"
                         : isSecondaryFeatured
@@ -120,70 +120,72 @@ export default async function Projects() {
                     )}
 
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-60" />
 
                     {/* Hover Overlay with Actions */}
                     <div
-                      className="absolute inset-0 bg-background/95 backdrop-blur-sm
-                      opacity-0 group-hover:opacity-100 transition-all duration-500
-                      flex flex-col items-center justify-center gap-4 p-6"
+                      className="absolute inset-0 pb-16
+                        bg-background/95 backdrop-blur-sm
+                        opacity-0 group-hover:opacity-100 transition-all duration-500
+                        flex items-center justify-center"
                     >
-                      <p className="text-muted-foreground text-sm text-center max-w-md leading-relaxed line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      <div className="flex gap-3 item-center justify-center">
-                        {project.link !== "#" && (
-                          <Button
-                            size="sm"
-                            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
-                              shadow-lg hover:shadow-xl hover:shadow-primary/40 transition-all"
-                            asChild
-                          >
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2 px-4 py-2"
+              <div className={`flex flex-col items-center justify-center gap-4 px-6 text-center max-w-md ${isSecondaryFeatured ? "md:max-w-[50%] absolute left-2" : ""}`}>
+                        <p className="text-muted-foreground text-sm text-center max-w-md leading-relaxed line-clamp-3">
+                          {project.description}
+                        </p>
+                        <div className="flex gap-3 item-center justify-center">
+                          {project.link !== "#" && (
+                            <Button
+                              size="sm"
+                              className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
+                                shadow-lg hover:shadow-xl hover:shadow-primary/40 transition-all"
+                              asChild
                             >
-                              <FaExternalLinkAlt className="w-3.5 h-3.5" />
-                              <span>Ver Projeto</span>
-                            </a>
-                          </Button>
-                        )}
-                        {project.github !== "#" && (
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="px-3 py-2 rounded-full text-foreground hover:text-primary border-primary/30 hover:bg-primary/10 hover:border-primary/50 flex items-center justify-center gap-2"
-                            asChild
-                          >
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2 text-sm"
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 px-4 py-2"
+                              >
+                                <FaExternalLinkAlt className="w-3.5 h-3.5" />
+                                <span>Ver Projeto</span>
+                              </a>
+                            </Button>
+                          )}
+                          {project.github !== "#" && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="px-3 py-2 rounded-full text-foreground hover:text-primary border-primary/30 hover:bg-primary/10 hover:border-primary/50 flex items-center justify-center gap-2"
+                              asChild
                             >
-                              <FaGithub className="w-3.5 h-3.5 mr-2" />
-                              Código
-                            </a>
-                          </Button>
-                        )}
-                      </div>
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 text-sm"
+                              >
+                                <FaGithub className="w-3.5 h-3.5 mr-2" />
+                                Código
+                              </a>
+                            </Button>
+                          )}
+                        </div>
+                      
 
-                      {/* Tech Stack in Overlay */}
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {project.techs.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
-                              text-xs font-medium text-primary"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                        {/* Tech Stack in Overlay */}
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {project.techs.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
+                                text-xs font-medium text-primary"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
 
                     {/* Category Badge */}
                     <div className="absolute top-6 right-6 z-10">
@@ -195,10 +197,23 @@ export default async function Projects() {
                       </span>
                     </div>
                   </div>
+                </div>
 
                   {/* Content - Always Visible */}
-                  <div className="p-6">
+                  {/* <div className="p-6 bg-background/40 backdrop-blur-sm w-full h-full max-h-12 flex items-center justify-center">
                     <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </div> */}
+                  {/* Title Bar */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 z-10
+                    bg-background/20 backdrop-blur-md
+                    px-5 py-3
+                    border-t border-border/30"
+                  >
+                    <h3 className="text-base md:text-lg font-semibold text-foreground text-center
+                      group-hover:text-primary transition-colors line-clamp-2">
                       {project.title}
                     </h3>
                   </div>
