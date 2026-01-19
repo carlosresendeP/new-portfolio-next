@@ -1,0 +1,247 @@
+import { PageSection, PageContainer } from "@/components/ui/page";
+import { Button } from "@/components/ui/button";
+import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
+import { projectsData } from "@/lib/projectsData";
+
+export default function ProjectsTwo() {
+  // Desired order (Newest -> Oldest) matching the seed data reverse order
+  const orderedTitles = [
+    "Aparatus Mobile - SaaS para Agendamentos de Barbearias",
+    "Site de Nutricionista - Dr.Ana Barbosa",
+    "Site de Nutricionista - Clarisse Nutri",
+    "Net Gestão",
+    "Barber Elite",
+    "Confeitaria Doce Encanto",
+    "Performance Master",
+    "Tradição Vidros",
+    "Dr. Marina Silva - Neuropsicóloga",
+  ];
+
+  const sortedProjects = [...projectsData].sort((a, b) => {
+    const indexA = orderedTitles.indexOf(a.title);
+    const indexB = orderedTitles.indexOf(b.title);
+
+    // If both found, sort by index
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    // If only A found, it comes first
+    if (indexA !== -1) return -1;
+    // If only B found, it comes first
+    if (indexB !== -1) return 1;
+    // If neither, keep original order (fallback to DB sort)
+    return 0;
+  });
+
+  const projects = sortedProjects.map((p) => ({
+    ...p,
+    // Map static data fields to component usage if necessary
+    // In projectsData.ts we used 'image', but projects.tsx used 'p.imageUrl' mapped to 'image'.
+    // Here our static data already has 'image'.
+    // original: link: p.liveUrl || "#" -> static: link
+    // original: github: p.gitUrl || "#" -> static: github
+    // original: techs: p.technologies -> static: techs
+  }));
+
+  return (
+    <PageSection
+      id="projects"
+      className="bg-background py-24 relative overflow-hidden"
+      aria-label="Projetos em Destaque"
+    >
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute -right-20 top-20 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+        <div className="absolute -left-20 bottom-20 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px] animate-float" />
+        <div className="absolute inset-0 bg-grid-white mask-[linear-gradient(to_bottom,transparent,black,transparent)] opacity-20" />
+      </div>
+
+      <PageContainer className="relative z-10">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center justify-center mb-6">
+            <span className="px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold tracking-[0.2em] text-primary uppercase">
+              Trabalhos
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
+            Ultimos Projetos
+          </h2>
+        </div>
+
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {projects.length === 0 ? (
+            <div className="col-span-full text-center py-20 text-muted-foreground">
+              <p>Nenhum projeto encontrado.</p>
+            </div>
+          ) : (
+            projects.map((project, index) => {
+              // Define grid layout patterns
+              const isLargeFeatured = index === 0; // First project takes 2 columns
+              const isSecondaryFeatured = index === 3; // Fourth project takes 2 rows
+
+              return (
+                <div
+                  key={project.id}
+                  className={`group relative bg-card border border-border/50 rounded-xl overflow-hidden
+                    hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20
+                  transition-all duration-500 w-full h-full
+                    ${isLargeFeatured ? "md:col-span-2 md:row-span-1" : ""}
+                    ${isSecondaryFeatured ? "lg:row-span-3" : ""}
+                  `}
+                >
+                  {/* Accent Tab */}
+                  <div className="absolute top-0 left-6 z-20">
+                    <div className="h-1 w-16 bg-linear-to-r from-primary to-chart-2 rounded-b-sm" />
+                  </div>
+
+                  {/* Image Container */}
+                  <div
+                    className={`relative overflow-hidden bg-muted h-full ${
+                      isLargeFeatured
+                        ? "aspect-21/9"
+                        : isSecondaryFeatured
+                          ? "aspect-4/5"
+                          : "aspect-4/3"
+                    }`}
+                  >
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
+                        Sem Imagem
+                      </div>
+                    )}
+
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-60" />
+
+                    {/* Hover Overlay with Actions */}
+                    <div
+                      className="absolute inset-0 pb-16
+                        bg-background/95 backdrop-blur-sm
+                        opacity-0 group-hover:opacity-100 transition-all duration-500
+                        flex items-center justify-center"
+                    >
+                      <div
+                        className={`flex flex-col items-center justify-center gap-4 px-6 text-center max-w-md ${isSecondaryFeatured ? "md:max-w-[50%] absolute left-2" : ""}`}
+                      >
+                        <p className="text-muted-foreground text-sm text-center max-w-md leading-relaxed line-clamp-3">
+                          {project.description}
+                        </p>
+                        <div className="flex gap-3 item-center justify-center">
+                          {project.link !== "#" && (
+                            <Button
+                              size="sm"
+                              className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90
+                                shadow-lg hover:shadow-xl hover:shadow-primary/40 transition-all"
+                              asChild
+                            >
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 px-4 py-2"
+                              >
+                                <FaExternalLinkAlt className="w-3.5 h-3.5" />
+                                <span>Ver Projeto</span>
+                              </a>
+                            </Button>
+                          )}
+                          {project.github !== "#" && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="px-3 py-2 rounded-full text-foreground hover:text-primary border-primary/30 hover:bg-primary/10 hover:border-primary/50 flex items-center justify-center gap-2"
+                              asChild
+                            >
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 text-sm"
+                              >
+                                <FaGithub className="w-3.5 h-3.5 mr-2" />
+                                Código
+                              </a>
+                            </Button>
+                          )}
+                        </div>
+
+                        {/* Tech Stack in Overlay */}
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {project.techs.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md 
+                                text-xs font-medium text-primary"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Category Badge */}
+                      <div className="absolute top-6 right-6 z-10">
+                        <span
+                          className="px-3 py-1.5 bg-background/90 backdrop-blur-md border border-border/50 rounded-lg
+                        text-xs font-semibold text-primary shadow-lg"
+                        >
+                          {project.category}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content - Always Visible */}
+                  {/* <div className="p-6 bg-background/40 backdrop-blur-sm w-full h-full max-h-12 flex items-center justify-center">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </div> */}
+                  {/* Title Bar */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 z-10
+                    bg-background/20 backdrop-blur-md
+                    px-5 py-3
+                    border-t border-border/30"
+                  >
+                    <h3
+                      className="text-base md:text-lg font-semibold text-foreground text-center
+                      group-hover:text-primary transition-colors line-clamp-2"
+                    >
+                      {project.title}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-16">
+          <Button
+            size="lg"
+            className="group relative rounded-full px-8 py-6 h-auto bg-background border-2 border-primary/30
+              transition-all duration-300 ease-out
+              hover:scale-105 hover:border-primary/60 hover:bg-primary/5
+              hover:shadow-[0_0_30px_rgba(1,206,196,0.3)]
+              active:scale-95"
+          >
+            <span className="relative z-10 flex items-center gap-3 text-foreground font-semibold text-base">
+              Ver todos
+              <FaArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </Button>
+        </div>
+      </PageContainer>
+    </PageSection>
+  );
+}
