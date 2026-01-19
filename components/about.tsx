@@ -29,8 +29,8 @@ export default function About() {
               <Image
                 src={DevPortrait}
                 alt="Trabalhando no escritório"
-                width={200}
-                height={300}
+                width={600}
+                height={600}
                 className="w-full object-cover hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />

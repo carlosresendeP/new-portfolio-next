@@ -95,7 +95,7 @@ export default function Hero() {
               className="group relative h-14 px-8 rounded-full text-lg font-semibold bg-primary overflow-hidden
             transition-all duration-300 ease-out
             hover:scale-105 hover:shadow-[0_0_20px_rgba(4,255,138,0.6),0_0_40px_rgba(4,255,138,0.4)]
-            before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
+            before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/20 before:to-transparent
             before:translate-x-[-200%] before:transition-transform before:duration-700
             hover:before:translate-x-[200%]
             active:scale-95"
@@ -160,8 +160,8 @@ export default function Hero() {
               <Image
                 src={DevPotrait}
                 alt="Desenvolvedor Profissional"
-                width={200}
-                height={300}
+                width={600}
+                height={600}
                 className="w-full h-full object-cover rounded-2xl"
                 priority
               />
